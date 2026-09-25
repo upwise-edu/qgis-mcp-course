@@ -1,0 +1,8 @@
+{
+  "name": "qgis-mcp-course",
+  "owner": { "name": "UPWISE" },
+  "description": "QGIS + Claude MCP 강의의 실습 자산 배포처. 절차 스킬 4종과 표준 스타일, QGIS MCP 서버 설정을 담는다.",
+  "plugins": [
+    { "name": "qgis-mcp-course", "source": "./" }
+  ]
+}

@@ -1,0 +1,37 @@
+# 문서 라이선스 — Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 UPWISE
+
+이 저장소의 **문서와 스타일 자산**은 CC BY 4.0 으로 배포합니다.
+
+전문(legal code): https://creativecommons.org/licenses/by/4.0/legalcode
+요약(deed): https://creativecommons.org/licenses/by/4.0/deed.ko
+
+## 어느 파일에 무엇이 적용되는가
+
+| 대상 | 라이선스 |
+|---|---|
+| `skills/*/SKILL.md` · `README.md` · `CHANGELOG.md` | CC BY 4.0 (이 파일) |
+| `skills/qgis-style/assets/*.qml` · `*.qml.tmpl` | CC BY 4.0 (이 파일) |
+| `skills/*/scripts/*.py` | MIT (`LICENSE`) |
+| `.claude-plugin/*.json` · `.mcp.json` | MIT (`LICENSE`) |
+
+## 출처 표시
+
+CC BY 4.0 은 출처 표시를 조건으로 합니다. 아래 형식이면 충분합니다.
+
+```
+UPWISE, "QGIS + Claude MCP 완전 정복" 강의 배포 플러그인
+https://github.com/upwise-edu/qgis-mcp-course (CC BY 4.0)
+```
+
+## 이 저장소에 없는 것
+
+QGIS MCP 서버(`nkarasiak/qgis-mcp`)는 **GNU GPL v2 or later** 입니다.
+이 저장소는 그 코드나 문서를 담고 있지 않습니다. `.mcp.json` 이 실행 시점에 원본 배포처를 가리킬 뿐입니다.
+서버 문서가 필요하면 원본 저장소에서 받으십시오.
+
+## 고지
+
+이 문서는 저장소 관리자가 배포 의도를 밝힌 것이며 **법률 자문이 아닙니다.**
+실제 이용 조건이 문제가 되는 상황에서는 각 라이선스 전문과 전문가 판단을 따르십시오.
