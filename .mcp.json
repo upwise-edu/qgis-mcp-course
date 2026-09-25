@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "qgis": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "https://github.com/nkarasiak/qgis-mcp/archive/refs/tags/v0.14.0.zip",
+        "qgis-mcp-server"
+      ]
+    }
+  }
+}
