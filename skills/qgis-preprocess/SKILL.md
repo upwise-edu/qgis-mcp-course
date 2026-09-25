@@ -11,9 +11,9 @@ compatibility: QGIS 3.44 LTR + QGIS MCP 플러그인 0.14.0 기준. MCP 도구�
 
 - **자동 생성물이다. 손편집 금지.** 고쳐도 다음 빌드에서 되돌아간다.
 - 정본 파일: `handouts/PREPROCESS.md` (강의 저장소)
-- 정본 커밋: `e5f12e26a69b1cf789e57b5eefd4c626131c39b8`
-- 정본 sha256: `f3634f73b40f45cf76f8105699c5d995129a0e40e041b93c99755b77f1dca910`
-- 생성 시각: 2026-09-25 19:11:52
+- 정본 커밋: `e5f12e26a69b1cf789e57b5eefd4c626131c39b8`  ⚠️ 빌드 시점에 작업트리 변경분이 있었다
+- 정본 sha256: `db79b858d5342ed5449bbd1498800dd8513bad98e83269f494c28d3fe820ba2e`
+- 생성 시각: 2026-09-25 20:26:53
 - 생성 스크립트: `scripts/build_skills.py`
 
 규칙을 고칠 일이 있으면 위 정본 파일을 고치고 빌드를 다시 돌린다.
@@ -159,6 +159,11 @@ date,project,file,item,measured,verdict,action,output
   이상인지. 감사 스크립트(`action`=`audit`)가 프로젝트마다 한 행 남긴다.
 - **로그 본문에 `|` 를 쓰지 않는다.** GPKG 레이어 지정(`파일.gpkg|layername=x`)을 그대로 적으면
   파이프를 구분자로 쓰는 도구에서 열이 밀린다. `<파일.gpkg> 의 <레이어> 레이어` 로 풀어 쓴다.
+- **값 안에 쉼표가 있으면 그 칸을 큰따옴표로 감싼다.** `measured` 에 delimitedtext URI
+  (`?type=csv&delimiter=,&useHeader=yes`)를 따옴표 없이 적으면 그 쉼표가 열 구분자로 읽혀
+  `verdict` 부터 한 칸씩 밀린다. 2026-09-25 실측에서 35행 중 1행이 9열로 나왔다.
+  칸 안에 `,` 나 `"` 가 있으면 큰따옴표로 감싸고 내부 `"` 는 `""` 로 겹쳐 쓴다.
+  손으로 한 줄씩 쓰지 말고 CSV 기록기를 쓰는 편이 안전하다. 다 쓴 뒤 열 수가 8인지 한 번 센다.
 - `action` 에는 **도구 이름만 쓰지 말고 인자 값까지** 적는다. 기본값에 맡긴 인자도 값을 적어 둔다
   (예: `native:buffer DISTANCE=100 SEGMENTS=8 DISSOLVE=true`). 값이 없으면 나중에 같은 결과를 재현할 수 없다.
 
