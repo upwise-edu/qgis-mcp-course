@@ -28,6 +28,15 @@ claude plugin install qgis-mcp-course@qgis-mcp-course
 설치하면 스킬 4종과 QGIS MCP 서버 설정(`.mcp.json`)이 함께 들어옵니다.
 호출은 `/qgis-mcp-course:qgis-connect-check` 처럼 하거나, 그냥 "연결 확인해줘" 라고 해도 됩니다.
 
+> **이미 `qgis` 서버를 직접 등록해 두셨다면 그 항목을 지우십시오.**
+> `~/.claude.json` 이나 실습 폴더의 `.mcp.json` 에 `qgis` 를 넣어 두셨다면 플러그인의 서버와 겹쳐
+> 서버가 두 벌 뜨고 도구가 두 세트로 보입니다. 기능이 깨지지는 않지만 어느 쪽을 쓰는지 알 수 없게 됩니다.
+> 플러그인을 쓸 때는 직접 등록한 항목을 지웁니다.
+>
+> ```
+> claude mcp remove qgis
+> ```
+
 갱신은 한 줄입니다.
 
 ```
@@ -51,11 +60,21 @@ Codex 와 Cursor 는 Claude 플러그인 형식을 설치하지 않습니다. **
 
    | 범위 | 복사 위치 |
    |---|---|
-   | 실습 폴더에서만 | `C:\qgis_mcp_class\.agents\skills\` |
+   | 실습 폴더에서만 | Codex 로 **여는 폴더 바로 아래** `.agents\skills\` (예: `C:\qgis_mcp_class\.agents\skills\`) |
    | 어느 폴더에서나 | `%USERPROFILE%\.agents\skills\` |
+
+   > **상위 폴더는 스캔되지 않습니다 (2026-09-25 실측).**
+   > `C:\qgis_mcp_class\.agents\skills\` 에 두고 그 **하위 폴더**에서 Codex 를 열면 스킬이 붙지 않습니다.
+   > 하위 폴더에서 작업하실 거라면 그 폴더 바로 아래에 `.agents\skills\` 를 두거나
+   > `%USERPROFILE%\.agents\skills\` 를 쓰십시오.
 
 3. 호출은 Codex CLI · IDE 확장에서 `$qgis-connect-check`, 또는 `/skills` 로 목록에서 고릅니다.
    ChatGPT 에서는 `@` 입니다.
+
+   > **스킬이 안 붙어도 조용히 자기 방식으로 처리합니다.**
+   > 실패했다고 알려 주지 않고 그냥 자기 판단으로 작업합니다. 로그 스키마가 통째로 달라집니다.
+   > 답변 **첫 줄에 `[qgis-connect-check 1.0.1]` 같은 헤더가 없으면 스킬이 적용되지 않은 것**입니다.
+   > 그때는 2번의 복사 위치를 다시 확인하십시오.
 
 MCP 서버는 따로 등록합니다. `%USERPROFILE%\.codex\config.toml` 끝에 붙입니다.
 
@@ -85,7 +104,7 @@ PowerShell 에서 `Test-NetConnection 127.0.0.1 -Port 9876` 이 `True` 여야 �
 
 ## 버전
 
-현재 `1.0.0` 입니다. 규칙은 semver 입니다.
+현재 `1.0.1` 입니다. 규칙은 semver 입니다. 변경 내역은 `CHANGELOG.md` 에 있습니다.
 
 | 자리 | 올리는 때 |
 |---|---|
