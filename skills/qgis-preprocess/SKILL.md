@@ -11,16 +11,16 @@ compatibility: QGIS 3.44 LTR + QGIS MCP 플러그인 0.14.0 기준. MCP 도구�
 
 - **자동 생성물이다. 손편집 금지.** 고쳐도 다음 빌드에서 되돌아간다.
 - 정본 파일: `handouts/PREPROCESS.md` (강의 저장소)
-- 정본 커밋: `e5f12e26a69b1cf789e57b5eefd4c626131c39b8`  ⚠️ 빌드 시점에 작업트리 변경분이 있었다
+- 정본 커밋: `5b716fa0b040bdb6f7984cc76e7db8522dbd3ce2`
 - 정본 sha256: `db79b858d5342ed5449bbd1498800dd8513bad98e83269f494c28d3fe820ba2e`
-- 생성 시각: 2026-09-25 20:26:53
+- 생성 시각: 2026-09-26 00:06:09
 - 생성 스크립트: `scripts/build_skills.py`
 
 규칙을 고칠 일이 있으면 위 정본 파일을 고치고 빌드를 다시 돌린다.
 
 ## 출력 규칙
 
-- 이 스킬로 답할 때 **첫 줄에 `[qgis-preprocess 1.0.0]` 을 쓴다.** 예외 없다.
+- 이 스킬로 답할 때 **첫 줄에 `[qgis-preprocess 1.0.1]` 을 쓴다.** 예외 없다.
 - 항목마다 잰 값을 그대로 적는다. 값을 확인하지 않은 채로 "처리했다" 고 보고하지 않는다.
 
 ## 동봉 스크립트 — 선택이다
@@ -34,6 +34,12 @@ python scripts/verify_preprocess.py --projects 3 --log C:\qgis_mcp_class\proj03_
 
 `--log` 는 **절대경로로 준다.** 안 주면 스크립트가 자기 위치를 기준으로 로그 폴더를 잡는데,
 스킬 폴더에서 실행하면 그 경로가 실습 폴더 밖이 된다.
+
+> **먼저 확인할 것.** 이 스크립트는 프로젝트 폴더 경로를 `C:\qgis_mcp_class\projNN_*` 로 고정해 두었다.
+> `--projects N` 은 그 경로의 `01.preprocess\_preprocess_log.csv` 에 이어 적는다.
+> 그리고 `--log` 를 절대경로로 줘도 스크립트가 자기 폴더 아래에 `_logs` 폴더를 만든다.
+> 실습 폴더가 `C:\qgis_mcp_class\projNN_*` 가 아니면 스크립트를 쓰지 말고
+> **MCP 도구만으로 아래 9항목을 수행한다.** 이 스킬은 스크립트 없이 성립한다.
 
 **Python 환경이 없으면 이 절을 건너뛴다.** 아래 9항목은 MCP 도구만으로 전부 성립한다.
 `get_layer_crs` · `get_layer_features` · `get_layer_extent` · `get_raster_info` · `execute_processing` 로
