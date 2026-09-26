@@ -17,7 +17,7 @@
   8 공간 인덱스 GPKG 의 rtree_<table>_<geom> 테이블 존재 (sqlite3)
   9 기록        프로젝트별 로그 파일이 있고 행 수가 파일 수 x 항목 수 이상인지
 
-항목 키 표기는 문서(handouts/PREPROCESS.md · docs/10 §6)와 같다:
+항목 키 표기는 전처리 규칙 문서(`PREPROCESS.md`)의 9항목과 같다:
   0.folder 1.naming 2.format 3.crs 4.encoding 5.integrity 6.field_type
   7a.extent 7b.raster 8.rtree 9.record
 
@@ -31,15 +31,21 @@
   - 판정만 하고 파일은 고치지 않는다. 상태를 바꾸지 않으므로 `.aux.xml` 같은
     부수 파일도 만들지 않는다(GDAL_PAM_ENABLED=NO).
 
+프로젝트 폴더 경로를 `C:\\qgis_mcp_class\\projNN_*` 로 고정해 두었다. 실습 폴더가 다르면
+이 스크립트를 쓰지 말고 QGIS MCP 도구로 같은 9항목을 잰다.
+
 사용:
     python verify_preprocess.py                # P1~P10 전부
     python verify_preprocess.py --projects 2,5 # 일부만
-    python verify_preprocess.py --log scripts/_logs/preprocess_audit_260912_final.csv
+    python verify_preprocess.py --projects 3 --log C:\\qgis_mcp_class\\proj03_population\\01.preprocess\\_audit.csv
 
 출력:
-    projNN_*/01.preprocess/_preprocess_log.csv       (프로젝트별)
-    scripts/_logs/preprocess_audit_YYMMDD.csv        (전체, --log 로 지정 가능)
-    컬럼: date, project, file, item, measured, verdict, action, output
+    projNN_*/01.preprocess/_preprocess_log.csv   (프로젝트별. 항목마다 한 행 append)
+    전체 로그 1개                                 (`--log` 로 지정)
+    두 CSV 의 컬럼: date, project, file, item, measured, verdict, action, output
+
+`--log` 는 절대경로로 준다. 안 주면 스크립트 위치에서 두 단계 위 폴더 아래
+`scripts/_logs/preprocess_audit_YYMMDD.csv` 를 만드는데, 그 경로가 실습 폴더 밖이 될 수 있다.
 """
 import argparse
 import csv
@@ -200,7 +206,7 @@ def _noepsg_note(crs, width=40):
     `to_epsg()` 는 기본 confidence 70 이다. ESRI 풍 WKT(예 AAIGrid 동반 `.prj` 의
     `DATUM["Korean_Geodetic_Datum_2002"]`)는 그 문턱을 넘지 못해 None 이 되는데,
     **CRS 태그가 없는 것과는 다른 상태**다. 둘을 같은 문구로 적으면 원인을 잘못 짚는다
-    (2026-09-12 `p6_idw_price*.tif` 오기 사례 — docs/10 §8-5).
+    (2026-09-12 `p6_idw_price*.tif` 를 "CRS 없음" 으로 잘못 적은 일이 있었다).
     확정 문구에 `EPSG:` 접두를 붙이지 않는다 — 판정이 문자열을 훑는 경우가 있다.
     """
     low = None

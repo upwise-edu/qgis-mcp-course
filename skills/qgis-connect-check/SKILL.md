@@ -7,7 +7,7 @@ compatibility: QGIS 3.44 LTR + QGIS MCP 플러그인 0.14.0 기준. qgis MCP 서
 
 ## 출력 규칙
 
-- 이 스킬로 답할 때 **첫 줄에 `[qgis-connect-check 1.0.2]` 을 쓴다.** 예외 없다.
+- 이 스킬로 답할 때 **첫 줄에 `[qgis-connect-check 1.0.3]` 을 쓴다.** 예외 없다.
 - 그 아래에 점검표를 적는다. 잰 값을 그대로 적고 요약하지 않는다.
 
 ## 이 스킬이 하는 일
@@ -61,7 +61,7 @@ qgis MCP 서버의 `ping` 을 호출한다.
 아래 형식으로 답한다. 칸을 비우지 않는다.
 
 ```
-[qgis-connect-check 1.0.2]
+[qgis-connect-check 1.0.3]
 연결: pong
 QGIS: <get_qgis_info 가 준 문자열 그대로>   (기준 3.44 LTR / 일치·불일치)
 플러그인: <버전 또는 확인 불가>            (기준 0.14.0 / 일치·불일치)

@@ -22,6 +22,7 @@ Copyright (c) 2026 UPWISE
 | `skills/qgis-style/assets/*.qml` · `*.qml.tmpl` | CC BY-NC-ND 4.0 (이 파일) |
 | `skills/*/scripts/*.py` | PolyForm Noncommercial 1.0.0 (`LICENSE`) |
 | `.claude-plugin/*.json` · `.mcp.json` | PolyForm Noncommercial 1.0.0 (`LICENSE`) |
+| `.gitattributes` | 라이선스 대상 아님 (줄끝 변환을 끄는 설정 파일) |
 
 ## 출처 표시
 
@@ -34,7 +35,10 @@ https://github.com/upwise-edu/qgis-mcp-course (CC BY-NC-ND 4.0)
 
 ## 이 저장소에 없는 것
 
-QGIS MCP 서버(`nkarasiak/qgis-mcp`)는 **GNU GPL v2 or later** 입니다.
+업스트림 QGIS MCP(`nkarasiak/qgis-mcp`)의 라이선스는 한 가지가 아닙니다.
+저장소와 그 QGIS 플러그인은 **GPL v2 or later** 이고(루트 `LICENSE` · `metadata.txt`),
+`uvx` 로 띄우는 서버 패키지 `src/qgis_mcp` 는 **MIT** 입니다(Copyright (c) 2025 Nicolas Karasiak).
+
 이 저장소는 그 코드나 문서를 담고 있지 않습니다. `.mcp.json` 이 실행 시점에 원본 배포처를 가리킬 뿐입니다.
 서버 문서가 필요하면 원본 저장소에서 받으십시오.
 
