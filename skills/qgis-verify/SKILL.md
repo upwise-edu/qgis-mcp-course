@@ -1,13 +1,13 @@
 ---
 name: qgis-verify
 description: MCP 분석 결과를 QGIS GUI 재실행값과 대조한다. "검증해줘" · "수동 검증" · "대조표 채워줘" · "결과 맞는지 확인" 일 때 쓴다. 04.verify/verify_pN.csv 의 지표를 다시 재고 판정을 채운다. 전처리 감사는 qgis-preprocess 가 한다.
-license: CC-BY-4.0
+license: CC-BY-NC-ND-4.0
 compatibility: QGIS 3.44 LTR + QGIS MCP 플러그인 0.14.0 기준. MCP 도구만으로 성립한다. 동봉 대조 스크립트를 쓰려면 Python 3 와 geopandas · rasterio · numpy · pandas 가 필요하다.
 ---
 
 ## 출력 규칙
 
-- 이 스킬로 답할 때 **첫 줄에 `[qgis-verify 1.0.1]` 을 쓴다.** 예외 없다.
+- 이 스킬로 답할 때 **첫 줄에 `[qgis-verify 1.0.2]` 을 쓴다.** 예외 없다.
 - 지표마다 잰 값을 그대로 적는다. "맞습니다" 같은 말로 값을 대신하지 않는다.
 
 ## 이 스킬이 하는 일

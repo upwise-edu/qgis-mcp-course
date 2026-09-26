@@ -104,7 +104,7 @@ PowerShell 에서 `Test-NetConnection 127.0.0.1 -Port 9876` 이 `True` 여야 �
 
 ## 버전
 
-현재 `1.0.1` 입니다. 규칙은 semver 입니다. 변경 내역은 `CHANGELOG.md` 에 있습니다.
+현재 `1.0.2` 입니다. 규칙은 semver 입니다. 변경 내역은 `CHANGELOG.md` 에 있습니다.
 
 | 자리 | 올리는 때 |
 |---|---|
@@ -114,10 +114,29 @@ PowerShell 에서 `Test-NetConnection 127.0.0.1 -Port 9876` 이 `True` 여야 �
 
 ## 라이선스
 
+저장소는 공개지만 **이용 조건은 비영리로 한정**합니다.
+
 | 대상 | 라이선스 |
 |---|---|
-| 코드 (`*.py` · `*.json`) | MIT — `LICENSE` |
-| 문서와 스타일 자산 (`SKILL.md` · `*.qml`) | CC BY 4.0 — `LICENSE-docs` |
+| 코드 (`*.py` · `*.json`) | PolyForm Noncommercial 1.0.0 — `LICENSE` |
+| 문서와 스타일 자산 (`SKILL.md` · `README.md` · `CHANGELOG.md` · `*.qml`) | CC BY-NC-ND 4.0 — `LICENSE-docs` |
+
+무엇이 되고 무엇이 안 되는지는 아래 표대로입니다.
+
+| 행위 | 가능 |
+|---|---|
+| 개인 학습·연구에 쓰기 | ○ |
+| 사적 수정 (내 환경에서 고쳐 쓰기) | ○ |
+| 출처 표시 | **필수** |
+| 남의 수업 자료로 재배포 | × |
+| 상업 서비스·유료 강의에 편입 | × |
+| 개작본을 공개·배포 | × |
+
+**이 강의 수강생도 같은 조건입니다.** 수강료는 이용 허락 범위를 넓히지 않습니다.
+상업적 이용이 필요하면 별도 협의 대상입니다.
+
+Copyright (c) 2026 UPWISE. 출처 표시 형식은 `LICENSE-docs` 에 있습니다.
+두 라이선스 파일의 머리말은 배포 의도를 밝힌 것이며 **법률 자문이 아닙니다.**
 
 QGIS MCP 서버(`nkarasiak/qgis-mcp`, GNU GPL v2 or later)의 코드나 문서는 이 저장소에 들어 있지 않습니다.
 
