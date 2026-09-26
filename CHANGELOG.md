@@ -2,6 +2,29 @@
 
 버전 규칙은 semver 입니다. `README.md` 의 버전 표를 보십시오.
 
+## 1.0.3 — 2026-09-26
+
+문서 정정판입니다. 스킬 본문의 절차·동봉 자산·서버 태그는 그대로입니다.
+
+- **설치 절을 앱 경로로 고쳤다.** Desktop 앱 Code 탭에서 `/plugin` → 플러그인 관리 팝업 →
+  **마켓플레이스 추가 ▸ 저장소에서** → `upwise-edu/qgis-mcp-course` 순서다.
+  1.0.2 까지 적혀 있던 "앱 안에는 마켓플레이스 추가 화면이 없다" 와 `+ ▸ Plugins ▸ Add plugin` 경로는
+  실측과 달라 지웠다. 앱 경로를 CLI 절보다 앞에 둔다 — 수강생 기본 경로다
+- `/plugin` 뒤에 인자를 붙이면 **인자가 무시되고 팝업만 열린다**는 주의를 넣었다
+- **헤더 예시에서 버전 번호를 뺐다.** `[qgis-connect-check <버전>]` 처럼 적는다.
+  `README.md` 에 버전 리터럴은 "버전" 절 한 줄만 남기고, 그 한 줄도 빌드가 `plugin.json` 에서 맞춘다
+- **동봉 스크립트 요건 목록을 실제 import 로 통일했다** — Python 3 와
+  fiona · geopandas · numpy · pandas · rasterio. `pandas` 가 빠져 있었다
+- **공개 저장소에서 볼 수 없는 내부 문서·로그 경로 참조를 지웠다.** 스킬 본문과 동봉 스크립트
+  두 개의 docstring 을 자기완결 문장으로 고쳤다 (로그 컬럼은 문서를 가리키지 않고 그 자리에 적는다)
+- **업스트림 라이선스를 정정했다.** 저장소 `nkarasiak/qgis-mcp` 와 QGIS 플러그인은 GPL v2+,
+  `uvx` 로 띄우는 서버 패키지 `src/qgis_mcp` 는 MIT 다. 이 플러그인은 그 코드를 포함하지 않고
+  실행 명령만 참조한다
+- **Codex 스킬 확인법을 실측으로 고쳤다.** `$qgis-connect-check` 로 지목해 첫 줄 헤더로 본다.
+  `codex` CLI 0.145.0 에는 `/skills` 서브커맨드가 없다
+- 이중 등록 제거 명령에 범위를 붙였다 — `claude mcp remove qgis -s user`
+- 라이선스 표에 `*.qml.tmpl`(문서 자산)과 `.gitattributes`(설정, 라이선스 대상 아님) 를 적었다
+
 ## 1.0.2 — 2026-09-26
 
 라이선스를 제한형으로 교체(MIT→PolyForm NC, CC BY→CC BY-NC-ND). 기능 변경 없음.

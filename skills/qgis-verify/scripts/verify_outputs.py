@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """P1~P10 산출 파일에서 핵심 수치를 직접 재계산한다.
 
-docs/8b.methodology_verify_v1.md §1 표의 "재계산값" 방법을 스크립트로 고정한 것이다.
 보고서·로그의 숫자를 읽어오지 않고 `C:\\qgis_mcp_class\\projNN_*` 의 산출 파일에서
-geopandas / rasterio / numpy 로 매번 다시 계산한다.
+geopandas / rasterio / numpy 로 매번 다시 계산한다. 어떤 방법으로 냈는지는 지표마다
+로그의 `method` 칸에 적힌다 — 그 문자열이 재계산 방법의 기록이다.
+
+프로젝트 폴더 경로를 `C:\\qgis_mcp_class\\projNN_*` 로 고정해 두었다. 실습 폴더가 다르면
+이 스크립트를 쓰지 말고 QGIS MCP 도구로 같은 값을 잰다.
 
 사용:
     python verify_outputs.py                  # P1~P10 전부 재계산
@@ -11,12 +14,14 @@ geopandas / rasterio / numpy 로 매번 다시 계산한다.
     python verify_outputs.py --template       # 재계산 + 04.verify/verify_pN.csv 생성
 
 출력:
-    scripts/_logs/verify_YYMMDD.csv   (date, project, metric, value, unit, source_file, method)
+    전체 로그 1개                      (`--log` 로 지정. 안 주면 스크립트 위치에서 두 단계 위
+                                       폴더 아래 `scripts/_logs/verify_YYMMDD.csv`)
+        컬럼: date, project, metric, value, unit, source_file, method
     projNN_*/04.verify/verify_pN.csv  (--template, 수동 검증 대조표)
         컬럼: metric, label, mcp_value, manual_value, diff, tolerance, verdict, note
-        `metric` 은 기계 ID, `label` 은 `data_projects.py` 의 `verify_metrics` 지표명이다.
+        `metric` 은 기계 ID, `label` 은 강의 프로젝트 정의 파일의 `verify_metrics` 지표명이다.
         한 지표가 여러 세부 행으로 나뉜다(예: "후보지 수" → p1_candidate_count ·
-        p1_top_count). label 이 `(추가)` 로 시작하는 행은 verify_metrics 에 없는 보조 행이다.
+        p1_top_count). label 이 `(추가)` 로 시작하는 행은 `verify_metrics` 에 없는 보조 행이다.
 
 산출 파일이 없으면 해당 metric 행을 value=NA · method=missing 으로 남기고 계속 진행한다.
 """
@@ -796,9 +801,9 @@ VERIFIERS = {1: verify_p1, 2: verify_p2, 3: verify_p3, 4: verify_p4, 5: verify_p
 TEMPLATE_HEADER = ["metric", "label", "mcp_value", "manual_value", "diff", "tolerance",
                    "verdict", "note"]
 
-# metric(기계 ID) -> label(지표명). label 은 `data_projects.py` 의 `verify_metrics`
+# metric(기계 ID) -> label(지표명). label 은 강의 프로젝트 정의 파일의 `verify_metrics`
 # 지표명이고, 한 지표가 여러 행으로 나뉘면 괄호로 세부를 붙인다.
-# `(추가)` 로 시작하는 label 은 verify_metrics 에 없는 보조 행이다.
+# `(추가)` 로 시작하는 label 은 `verify_metrics` 에 없는 보조 행이다.
 METRIC_LABELS = {
     # P1 verify_metrics: 후보지 수 · 후보지 면적
     "p1_candidate_count": "후보지 수",
