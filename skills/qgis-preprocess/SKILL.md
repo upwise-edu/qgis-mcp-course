@@ -1,7 +1,7 @@
 ---
 name: qgis-preprocess
 description: 00.origins 의 원본을 01.preprocess 표준 입력으로 만든다. "전처리해줘" · "표준 입력 만들어줘" · "5186 으로 통일해줘" 일 때 쓴다. 검증 9항목을 순서대로 수행하고 _preprocess_log.csv 에 항목마다 기록한다. 분석과 도면화에는 쓰지 않는다.
-license: CC-BY-4.0
+license: CC-BY-NC-ND-4.0
 compatibility: QGIS 3.44 LTR + QGIS MCP 플러그인 0.14.0 기준. MCP 도구만으로 성립한다. 동봉 감사 스크립트를 쓰려면 Python 3 와 geopandas · rasterio · fiona 가 필요하다.
 ---
 
@@ -13,14 +13,14 @@ compatibility: QGIS 3.44 LTR + QGIS MCP 플러그인 0.14.0 기준. MCP 도구�
 - 정본 파일: `handouts/PREPROCESS.md` (강의 저장소)
 - 정본 커밋: `5b716fa0b040bdb6f7984cc76e7db8522dbd3ce2`
 - 정본 sha256: `db79b858d5342ed5449bbd1498800dd8513bad98e83269f494c28d3fe820ba2e`
-- 생성 시각: 2026-09-26 00:06:09
+- 생성 시각: 2026-09-26 10:59:58
 - 생성 스크립트: `scripts/build_skills.py`
 
 규칙을 고칠 일이 있으면 위 정본 파일을 고치고 빌드를 다시 돌린다.
 
 ## 출력 규칙
 
-- 이 스킬로 답할 때 **첫 줄에 `[qgis-preprocess 1.0.1]` 을 쓴다.** 예외 없다.
+- 이 스킬로 답할 때 **첫 줄에 `[qgis-preprocess 1.0.2]` 을 쓴다.** 예외 없다.
 - 항목마다 잰 값을 그대로 적는다. 값을 확인하지 않은 채로 "처리했다" 고 보고하지 않는다.
 
 ## 동봉 스크립트 — 선택이다
