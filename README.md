@@ -1,6 +1,6 @@
 # QGIS + Claude MCP 완전 정복 — 강의 배포 플러그인
 
-QGIS 를 MCP 로 제어하는 강의의 실습 자산입니다. 절차 스킬 4종과 표준 스타일 24개, 그리고 QGIS MCP 서버 설정이 들어 있습니다.
+QGIS 를 MCP 로 제어하는 강의의 실습 자산입니다. 절차 스킬 4종과 표준 스타일 25개, 그리고 QGIS MCP 서버 설정이 들어 있습니다.
 
 실습 데이터와 수집 스크립트는 여기 없습니다. 그쪽은 인프런 첨부 파일 `qgis_mcp_class_starter.zip` 입니다.
 **이 플러그인이 없어도 실습은 됩니다.** 실습 규칙 본문은 데이터 패키지의 `AGENTS.md` 와 `PREPROCESS.md` 에 있습니다.
@@ -13,7 +13,7 @@ QGIS 를 MCP 로 제어하는 강의의 실습 자산입니다. 절차 스킬 4�
 | `qgis-connect-check` | 연결 확인 · QGIS 버전 확인. 다른 작업을 시작하기 전에 | — |
 | `qgis-preprocess` | `00.origins` → `01.preprocess` 검증 9항목 전처리 | 감사 스크립트 (선택) |
 | `qgis-verify` | `04.verify/verify_pN.csv` 대조표 채우기 | 재계산 스크립트 (선택) |
-| `qgis-style` | 표준 스타일 적용 | QML 21 + 치환 템플릿 3 |
+| `qgis-style` | 표준 스타일 적용 | QML 22 + 치환 템플릿 3 |
 
 동봉 스크립트는 **선택 실행**입니다. Python 3 와 fiona · geopandas · numpy · pandas · rasterio 가 있어야 돌아갑니다.
 없어도 스킬은 MCP 도구만으로 성립합니다.
