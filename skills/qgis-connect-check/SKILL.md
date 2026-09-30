@@ -2,12 +2,12 @@
 name: qgis-connect-check
 description: QGIS MCP 연결을 점검한다. "연결 확인" · "ping" · "QGIS 버전" · "MCP 가 붙었나" 를 물을 때, 그리고 다른 QGIS 작업을 시작하기 전에 쓴다. QGIS 가 안 떠 있거나 Start Server 를 안 눌렀을 때를 잡아낸다.
 license: CC-BY-NC-ND-4.0
-compatibility: QGIS 3.44 LTR + QGIS MCP 플러그인 0.14.0 기준. qgis MCP 서버가 등록돼 있어야 한다. 추가 프로그램은 필요 없다.
+compatibility: QGIS 3.44 LTR + QGIS MCP 플러그인 0.15.0 기준. qgis MCP 서버가 등록돼 있어야 한다. 추가 프로그램은 필요 없다.
 ---
 
 ## 출력 규칙
 
-- 이 스킬로 답할 때 **첫 줄에 `[qgis-connect-check 1.0.3]` 을 쓴다.** 예외 없다.
+- 이 스킬로 답할 때 **첫 줄에 `[qgis-connect-check 1.1.0]` 을 쓴다.** 예외 없다.
 - 그 아래에 점검표를 적는다. 잰 값을 그대로 적고 요약하지 않는다.
 
 ## 이 스킬이 하는 일
@@ -22,8 +22,8 @@ QGIS 가 살아 있는지, MCP 서버가 붙었는지, 버전이 강의 기준�
 | 항목 | 강의 기준값 |
 |---|---|
 | QGIS | 3.44 LTR |
-| QGIS MCP 플러그인 | 0.14.0 |
-| MCP 서버 | `uvx --from https://github.com/nkarasiak/qgis-mcp/archive/refs/tags/v0.14.0.zip qgis-mcp-server` |
+| QGIS MCP 플러그인 | 0.15.0 |
+| MCP 서버 | `uvx --from https://github.com/nkarasiak/qgis-mcp/archive/refs/tags/v0.15.0.zip qgis-mcp-server` |
 | 포트 | 127.0.0.1:9876 |
 
 ## 절차
@@ -48,8 +48,16 @@ qgis MCP 서버의 `ping` 을 호출한다.
 `get_plugin_info` 로 QGIS MCP 플러그인의 버전을 읽는다.
 값이 안 나오면 `list_plugins` 로 목록을 받아 이름에 `qgis` 와 `mcp` 가 함께 들어간 항목을 찾는다.
 
-- 0.14.0 이면 기준과 같다.
-- 두 방법 다 값을 못 주면 **추측하지 말고** "확인 불가" 로 적는다. 이 항목은 실패 사유가 아니다.
+읽은 값을 기준 0.15.0 과 비교해 **아래 세 갈래 중 하나를 그대로 적는다.**
+
+| 읽은 값 | 적을 문구 |
+|---|---|
+| 0.15.0 | `기준 0.15.0 / 일치` |
+| 0.15.0 보다 높다 | `0.15.0 보다 높음: 강의 검증 범위 밖, 결과가 이상하면 버전 차이를 먼저 의심` |
+| 0.15.0 보다 낮다 | `0.15.0 보다 낮음: QGIS 플러그인 관리자에서 업그레이드` |
+
+- 어느 갈래든 **실패 사유가 아니다.** 판정은 계속한다.
+- 두 방법 다 값을 못 주면 **추측하지 말고** "확인 불가" 로 적는다. 세 갈래 중 하나를 고르지 않는다.
 
 ### 4. 프로젝트 상태 (선택)
 
@@ -61,10 +69,10 @@ qgis MCP 서버의 `ping` 을 호출한다.
 아래 형식으로 답한다. 칸을 비우지 않는다.
 
 ```
-[qgis-connect-check 1.0.3]
+[qgis-connect-check 1.1.0]
 연결: pong
 QGIS: <get_qgis_info 가 준 문자열 그대로>   (기준 3.44 LTR / 일치·불일치)
-플러그인: <버전 또는 확인 불가>            (기준 0.14.0 / 일치·불일치)
+플러그인: <버전 또는 확인 불가>            (3절 세 갈래 문구 중 하나, 또는 확인 불가)
 프로젝트 CRS: <값 또는 열린 프로젝트 없음>  (기준 EPSG:5186)
 판정: 사용 가능 / 사용 불가 — <사유>
 ```

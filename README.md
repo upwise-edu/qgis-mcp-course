@@ -18,14 +18,35 @@ QGIS 를 MCP 로 제어하는 강의의 실습 자산입니다. 절차 스킬 4�
 동봉 스크립트는 **선택 실행**입니다. Python 3 와 fiona · geopandas · numpy · pandas · rasterio 가 있어야 돌아갑니다.
 없어도 스킬은 MCP 도구만으로 성립합니다.
 
-## 설치 — Claude Desktop 앱 (Code 탭)
+## 설치 — 1. 사전 요건
+
+| 항목 | 값 |
+|---|---|
+| QGIS | 3.44 LTR (기준 환경) |
+| QGIS MCP 플러그인 | 0.15.0 — QGIS 플러그인 관리자에서 설치하고 **Start Server** 를 누릅니다 |
+| MCP 서버 | `uvx` 로 실행. `uv` 가 설치돼 있어야 합니다 |
+| 서버 버전 | `v0.15.0` 태그 고정 |
+| 포트 | 127.0.0.1:9876 |
+| **Git for Windows** | **기본 경로(GitHub 저장소)에 필요합니다.** git 이 없으면 저장소를 클론할 수 없어 마켓플레이스 등록 자체가 실패하고, 등록만 남은 상태에서는 카탈로그를 받지 못해 **탐색·내 항목에 플러그인이 안 뜹니다** (2026-09-30 실측). git 을 깔 수 없으면 아래 **5. 대안 — 로컬 폴더**로 갑니다 |
+| 동봉 스크립트 (선택) | Python 3 · fiona · geopandas · numpy · pandas · rasterio |
+
+연결이 안 되면 QGIS 가 떠 있는지, **Start Server** 를 눌렀는지부터 봅니다.
+PowerShell 에서 `Test-NetConnection 127.0.0.1 -Port 9876` 이 `True` 여야 합니다.
+
+## 설치 — 2. 기본 경로: Claude Desktop 앱 (Code 탭)
 
 터미널을 쓰지 않고 앱 안에서 끝납니다. 아래가 수강생 기본 경로입니다.
 
 1. 실습 폴더를 연 Code 탭 입력창에 `/plugin` 을 입력합니다. **플러그인 관리 팝업**이 열립니다.
 2. 팝업에서 **"마켓플레이스 추가"** 를 고릅니다. 선택지가 두 개 나옵니다 — **"앤트로픽 소스 탐색"** 과 **"저장소에서"**.
 3. **"저장소에서"** 를 고르고 `upwise-edu/qgis-mcp-course` 를 입력합니다.
-4. 설치 직전에 경고 팝업이 뜹니다. **정상입니다.** 계속을 누르세요. 원문은 이렇습니다.
+   칸 안내 문구는 "GitHub owner/repo 형식 또는 Git 저장소 URL" 입니다.
+   `marketplace.json` 의 raw 주소를 넣으면 실패합니다.
+4. **아래 목록에 뜬 후보의 오른쪽 "추가" 버튼을 한 번 더 누릅니다.**
+   입력하면 후보가 바로 보이기 때문에 다 된 것처럼 보이는데, 그 상태로 창을 닫으면
+   **등록만 남고 카탈로그를 받지 못합니다.** 가장 자주 빠뜨리는 칸입니다.
+5. **탐색**에서 "QGIS + Claude MCP 완전 정복" 을 찾아 **설치**합니다.
+6. 설치 직전에 경고 팝업이 뜹니다. **정상입니다.** 계속을 누르세요. 원문은 이렇습니다.
 
    > 이 플러그인에는 로컬 MCP 서버가 포함되어 있습니다
    > 설치하면 컴퓨터의 모든 항목에 대한 액세스 권한이 부여됩니다
@@ -33,13 +54,52 @@ QGIS 를 MCP 로 제어하는 강의의 실습 자산입니다. 절차 스킬 4�
    > 신뢰하는 개발자가 제공하는 플러그인만 사용하세요. …
 
    이 플러그인이 QGIS 에 붙는 MCP 서버를 이 PC 에서 직접 띄우기 때문에 나오는 경고입니다.
-5. **새 세션을 엽니다.** 입력창에 `/qgis-mcp-course:qgis-connect-check` 를 넣습니다.
-   첫 줄에 스킬 헤더가 나오고 `연결: pong` 이 보이면 끝입니다.
+7. **새 세션을 엽니다.** 설치한 세션에는 스킬과 MCP 서버가 아직 올라와 있지 않습니다.
 
 > **`/plugin` 뒤에 인자를 붙이지 마세요.** `/plugin marketplace add upwise-edu/qgis-mcp-course` 처럼
 > 터미널 문법을 그대로 넣으면 **인자는 무시되고 팝업만 열립니다.** 팝업 안에서 위 순서대로 고르면 됩니다.
 
-## 설치 — Claude Code CLI
+## 설치 — 3. 설치 확인
+
+연결 확인 스킬을 부르기 **전에** 두 칸을 봅니다.
+
+| 보는 곳 | 정상 |
+|---|---|
+| `/plugin` 팝업의 **내 항목(Installed)** | `qgis-mcp-course` 가 있습니다 |
+| 새 세션 입력창에 `/qgis-mcp-course:` 까지 입력 | 스킬 4종이 자동완성으로 뜹니다 |
+
+두 칸이 맞으면 `/qgis-mcp-course:qgis-connect-check` 를 부릅니다.
+첫 줄에 헤더 `[qgis-connect-check <버전>]` 이 나오고 `연결: pong` 이 보이면 끝입니다.
+
+> **순서를 바꾸지 마세요.** 스킬이 안 붙은 세션에서도 연결 확인은 답을 내놓습니다 —
+> 헤더 없이, 자기 방식으로. 그러면 QGIS 문제인지 설치 문제인지 갈리지 않습니다.
+> 위 두 칸을 먼저 보는 이유입니다.
+
+## 설치 — 4. 탐색에 안 보일 때 (자기진단)
+
+마켓플레이스 관리 목록에는 `qgis-mcp-course` 가 보이는데 **탐색이나 내 항목에는 없는** 상태입니다.
+순서대로 의심합니다.
+
+1. **3번에서 "추가" 버튼을 안 눌렀다.** 등록만 남고 카탈로그가 없는 상태입니다.
+   마켓플레이스를 지우고 2절 3~4번을 다시 합니다.
+2. **git 이 없다.** PowerShell 에서 `git --version` 이 버전을 내놓아야 합니다.
+   못 찾으면 Git for Windows 를 설치하고 앱을 다시 켭니다.
+   `Command 'git' not found` 로 실패한 등록은 목록에만 남습니다 (2026-09-30 실측).
+
+git 을 깔 수 없는 PC 는 아래 5절로 갑니다.
+
+## 설치 — 5. 대안: 로컬 폴더 (git 불필요)
+
+**"저장소에서" 칸에는 로컬 폴더 경로도 들어갑니다.** git 없이 설치되는 경로입니다 (2026-09-30 실측).
+
+1. 2절 1~2번은 같습니다 — `/plugin` → **마켓플레이스 추가** → **저장소에서**.
+2. 칸에 강의 패키지의 `plugin\` 폴더 경로를 넣습니다. 예: `C:\qgis_mcp_class\plugin`
+3. 오른쪽 **"추가"** 를 누릅니다. 그다음은 2절 5~7번과 같습니다 — 탐색 → 설치 → 경고 팝업 계속 → 새 세션.
+
+이 경로로 깔면 **갱신도 폴더를 바꿔야 합니다.** GitHub 경로와 달리 `claude plugin update` 가
+새 판을 받아 오지 않습니다.
+
+## 설치 — 6. 터미널: Claude Code CLI
 
 ```
 claude plugin marketplace add upwise-edu/qgis-mcp-course
@@ -66,7 +126,7 @@ claude plugin install qgis-mcp-course@qgis-mcp-course
 claude plugin update qgis-mcp-course@qgis-mcp-course
 ```
 
-## 설치 — Codex · Cursor
+## 설치 — 7. Codex · Cursor
 
 Codex 와 Cursor 는 Claude 플러그인 형식을 설치하지 않습니다. **스킬 폴더를 복사**합니다.
 
@@ -99,30 +159,16 @@ MCP 서버는 따로 등록합니다. `%USERPROFILE%\.codex\config.toml` 끝에 
 ```toml
 [mcp_servers.qgis]
 command = "uvx"
-args = ["--from", "https://github.com/nkarasiak/qgis-mcp/archive/refs/tags/v0.14.0.zip", "qgis-mcp-server"]
+args = ["--from", "https://github.com/nkarasiak/qgis-mcp/archive/refs/tags/v0.15.0.zip", "qgis-mcp-server"]
 ```
 
 Cursor 는 같은 `uvx` 명령을 Cursor 의 MCP 설정에 등록합니다.
 
 규칙 파일은 할 일이 없습니다. 실습 폴더 루트의 `AGENTS.md` 를 그대로 읽습니다.
 
-## 요건
-
-| 항목 | 값 |
-|---|---|
-| QGIS | 3.44 LTR (기준 환경) |
-| QGIS MCP 플러그인 | 0.14.0 — QGIS 플러그인 관리자에서 설치하고 **Start Server** 를 누릅니다 |
-| MCP 서버 | `uvx` 로 실행. `uv` 가 설치돼 있어야 합니다 |
-| 서버 버전 | `v0.14.0` 태그 고정 |
-| 포트 | 127.0.0.1:9876 |
-| 동봉 스크립트 (선택) | Python 3 · fiona · geopandas · numpy · pandas · rasterio |
-
-연결이 안 되면 QGIS 가 떠 있는지, **Start Server** 를 눌렀는지부터 봅니다.
-PowerShell 에서 `Test-NetConnection 127.0.0.1 -Port 9876` 이 `True` 여야 합니다.
-
 ## 버전
 
-현재 버전: 1.0.3
+현재 버전: 1.1.0
 
 규칙은 semver 입니다. 변경 내역은 `CHANGELOG.md` 에 있습니다.
 이 문서에서 버전 번호를 적는 곳은 위 한 줄뿐입니다 — 빌드 스크립트가 `plugin.json` 에서 맞춥니다.
