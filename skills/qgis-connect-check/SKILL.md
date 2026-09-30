@@ -1,6 +1,6 @@
 ---
 name: qgis-connect-check
-description: QGIS MCP 연결을 점검한다. "연결 확인" · "ping" · "QGIS 버전" · "MCP 가 붙었나" 를 물을 때, 그리고 다른 QGIS 작업을 시작하기 전에 쓴다. QGIS 가 안 떠 있거나 Start Server 를 안 눌렀을 때를 잡아낸다.
+description: QGIS MCP 연결을 점검한다. "연결 확인" · "ping" · "QGIS 버전" · "MCP 가 붙었나" 를 물을 때, 그리고 다른 QGIS 작업을 시작하기 전에 쓴다. QGIS 가 안 떠 있거나 Run MCP 를 안 눌렀을 때를 잡아낸다.
 license: CC-BY-NC-ND-4.0
 compatibility: QGIS 3.44 LTR + QGIS MCP 플러그인 0.15.0 기준. qgis MCP 서버가 등록돼 있어야 한다. 추가 프로그램은 필요 없다.
 ---
@@ -82,7 +82,7 @@ QGIS: <get_qgis_info 가 준 문자열 그대로>   (기준 3.44 LTR / 일치·�
 아래 순서로 짚는다. 대부분 1번과 2번에서 끝난다.
 
 1. **QGIS 가 떠 있는가.** 창이 하나도 없으면 QGIS 부터 실행한다.
-2. **플러그인의 Start Server 를 눌렀는가.** QGIS MCP 도크 위젯에서 서버를 켜야 포트가 열린다.
+2. **플러그인의 Run MCP 를 눌렀는가.** QGIS MCP 도크 위젯에서 서버를 켜야 포트가 열린다.
    이 칸을 가장 자주 빠뜨린다.
 3. **포트가 열렸는가.** Windows PowerShell 에서 확인한다.
 
@@ -93,13 +93,13 @@ QGIS: <get_qgis_info 가 준 문자열 그대로>   (기준 3.44 LTR / 일치·�
    `TcpTestSucceeded : True` 여야 한다. False 면 QGIS 쪽 문제다. MCP 클라이언트를 재시작해도 소용없다.
 4. **MCP 서버가 등록돼 있는가.** 등록 자체가 없으면 도구 목록에 `ping` 이 아예 안 보인다.
    강의 배포 플러그인을 설치했다면 플러그인의 `.mcp.json` 이 등록을 대신한다.
-5. 여기까지 다 맞는데도 실패하면 QGIS 를 재시작하고 Start Server 를 다시 누른다.
+5. 여기까지 다 맞는데도 실패하면 QGIS 를 재시작하고 Run MCP 를 다시 누른다.
 
 QGIS 를 껐는데 `qgis-mcp-server` 프로세스가 여러 개 남아 있는 경우가 있다.
 포트 9876 이 닫혀 있으면 QGIS 쪽 문제이지 그 프로세스 탓이 아니다. 신경 쓰지 않아도 된다.
 
 ## 하지 않는 것
 
-- 연결 복구를 자동으로 시도하지 않는다. QGIS 실행과 Start Server 는 사람이 누른다.
+- 연결 복구를 자동으로 시도하지 않는다. QGIS 실행과 Run MCP 는 사람이 누른다.
 - `execute_code` 를 쓰지 않는다. 이 점검에 필요한 값은 전부 전용 도구로 읽을 수 있다.
 - 값을 확인하지 않은 채로 "연결됐다" 고 보고하지 않는다.

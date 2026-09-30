@@ -23,14 +23,14 @@ QGIS 를 MCP 로 제어하는 강의의 실습 자산입니다. 절차 스킬 4�
 | 항목 | 값 |
 |---|---|
 | QGIS | 3.44 LTR (기준 환경) |
-| QGIS MCP 플러그인 | 0.15.0 — QGIS 플러그인 관리자에서 설치하고 **Start Server** 를 누릅니다 |
+| QGIS MCP 플러그인 | 0.15.0 — QGIS 플러그인 관리자에서 설치하고 **Run MCP** 를 누릅니다 |
 | MCP 서버 | `uvx` 로 실행. `uv` 가 설치돼 있어야 합니다 |
 | 서버 버전 | `v0.15.0` 태그 고정 |
 | 포트 | 127.0.0.1:9876 |
 | **Git for Windows** | **기본 경로(GitHub 저장소)에 필요합니다.** git 이 없으면 저장소를 클론할 수 없어 마켓플레이스 등록 자체가 실패하고, 등록만 남은 상태에서는 카탈로그를 받지 못해 **탐색·내 항목에 플러그인이 안 뜹니다** (2026-09-30 실측). git 을 깔 수 없으면 아래 **5. 대안 — 로컬 폴더**로 갑니다 |
 | 동봉 스크립트 (선택) | Python 3 · fiona · geopandas · numpy · pandas · rasterio |
 
-연결이 안 되면 QGIS 가 떠 있는지, **Start Server** 를 눌렀는지부터 봅니다.
+연결이 안 되면 QGIS 가 떠 있는지, **Run MCP** 를 눌렀는지부터 봅니다.
 PowerShell 에서 `Test-NetConnection 127.0.0.1 -Port 9876` 이 `True` 여야 합니다.
 
 ## 설치 — 2. 기본 경로: Claude Desktop 앱 (Code 탭)
